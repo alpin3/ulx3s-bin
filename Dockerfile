@@ -2,8 +2,8 @@ FROM alpine:3.10
 MAINTAINER kost - https://github.com/kost
 
 ENV ULX3SBASEDIR=/opt \
- ULX3SURL=https://github.com/alpin3/ulx3s/releases/download/v2019.11.25/ulx3s-2019-11-25-linux-amd64.tar.gz \
- ULX3SOPT=https://github.com/alpin3/ulx3s/releases/download/v2019.11.25/opt-ghdl-2019-11-25-linux-amd64.tar.gz \
+ ULX3SURL=https://github.com/alpin3/ulx3s/releases/download/v2019.11.27/ulx3s-2019.11.27-linux-x86_64.tar.gz \
+ ULX3SOPT=https://github.com/alpin3/ulx3s/releases/download/v2019.11.27/ulx3s-ghdl-2019.11.27-linux-x86_64.tar.gz \
  ULX3STMPOPT=/tmp/opt-ghdl.tgz \
  ULX3STMP=/tmp/ulx3s.tgz
 
@@ -21,6 +21,5 @@ RUN apk --update add git bash wget ca-certificates python3 py2-pip && \
  pip2 install pyserial && \
  pip3 install esptool && \
  pip3 install pyserial && \
- pip3 install -U apio && \
  echo "Success"
 
