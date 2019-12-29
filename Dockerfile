@@ -6,7 +6,7 @@ ENV ULX3SBASEDIR=/opt \
 
 RUN apk --update add git bash tar curl ca-certificates python3 py2-pip && \
  rm -f /var/cache/apk/* && \
- curl $ULX3SURL | tar -xvz --strip-components=1 -C /opt -f - && \
+ curl -L $ULX3SURL | tar -xvz --strip-components=1 -C /opt -f - && \
  ln -sf /opt/ulx3s-* /opt/ulx3s && \
  pip2 install esptool && \
  pip2 install pyserial && \
