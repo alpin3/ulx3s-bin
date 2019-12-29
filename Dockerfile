@@ -2,24 +2,21 @@ FROM alpine:3.10
 MAINTAINER kost - https://github.com/kost
 
 ENV ULX3SBASEDIR=/opt \
- ULX3SURL=https://github.com/alpin3/ulx3s/releases/download/v2019.11.27/ulx3s-2019.11.27-linux-x86_64.tar.gz \
- ULX3SOPT=https://github.com/alpin3/ulx3s/releases/download/v2019.11.27/ulx3s-ghdl-2019.11.27-linux-x86_64.tar.gz \
- ULX3STMPOPT=/tmp/opt-ghdl.tgz \
- ULX3STMP=/tmp/ulx3s.tgz
+ ULX3SURL=https://github.com/alpin3/ulx3s/releases/download/v2019.12.29/ulx3s-2019.12.29-linux-x86_64.tar.gz
 
-RUN apk --update add git bash wget ca-certificates python3 py2-pip && \
+RUN apk --update add git bash curl ca-certificates python3 py2-pip && \
  rm -f /var/cache/apk/* && \
- wget $ULX3SURL -O $ULX3STMP && \
- tar -xvz --strip-components=1 -C /usr/local/bin -f $ULX3STMP && \
- rm -f $ULX3STMP && \
- wget $ULX3SOPT -O $ULX3STMPOPT && \
- tar -xvz  -C /opt -f $ULX3STMPOPT && \
- rm -f $ULX3STMPOPT && \
- cd $ULX3SBASEDIR && \
- git clone https://github.com/emard/ulx3s-bin && \
+ curl $ULX3SURL | tar -xvz --strip-components=1 -C /opt -f $ULX3STMP && \
+ ln -sf /opt/ulx3s-* /opt/ulx3s && \
  pip2 install esptool && \
  pip2 install pyserial && \
  pip3 install esptool && \
  pip3 install pyserial && \
+ pip install -e git+https://github.com/FPGAwars/apio@develop#egg=apio && \
+ apio install scons && \
+ apio install yosys && \
+ apio install ecp5 && \
+ echo 'export PATH=/opt/ulx3s/bin:$PATH' > /etc/profile.d/ulx3s.sh && \
+ echo 'export GHDL_PREFIX=/opt/ulx3s/ghdl/lib/ghdl' >> /etc/profile.d/ulx3s.sh && \
  echo "Success"
 
