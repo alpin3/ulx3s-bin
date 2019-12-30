@@ -6,13 +6,13 @@ ENV ULX3SBASEDIR=/opt \
 
 RUN apk --update add git bash tar curl ca-certificates python3 py2-pip && \
  rm -f /var/cache/apk/* && \
- curl -L $ULX3SURL | tar -xvz --strip-components=1 -C /opt -f - && \
- ln -sf /opt/ulx3s-* /opt/ulx3s && \
+ mkdir -p /opt/ulx3s && \
+ curl -L $ULX3SURL | tar -xvz --strip-components=1 -C /opt/ulx3s -f - && \
  pip2 install esptool && \
  pip2 install pyserial && \
  pip3 install esptool && \
  pip3 install pyserial && \
- pip install -e git+https://github.com/FPGAwars/apio@develop#egg=apio && \
+ pip3 install -e git+https://github.com/FPGAwars/apio@develop#egg=apio && \
  apio install scons && \
  apio install yosys && \
  apio install ecp5 && \
