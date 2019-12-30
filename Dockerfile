@@ -2,7 +2,9 @@ FROM alpine:3.10
 MAINTAINER kost - https://github.com/kost
 
 ENV ULX3SBASEDIR=/opt \
- ULX3SURL=https://github.com/alpin3/ulx3s/releases/download/v2019.12.29/ulx3s-2019.12.29-linux-x86_64.tar.gz
+ ULX3SURL=https://github.com/alpin3/ulx3s/releases/download/v2019.12.29/ulx3s-2019.12.29-linux-x86_64.tar.gz \
+ PATH=/opt/ulx3s/bin:$PATH \
+ GHDL_PREFIX=/opt/ulx3s/ghdl/lib/ghdl
 
 RUN apk --update add git bash tar curl ca-certificates python3 py2-pip && \
  rm -f /var/cache/apk/* && \
