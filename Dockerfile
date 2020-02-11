@@ -2,7 +2,7 @@ FROM alpine:3.10
 MAINTAINER kost - https://github.com/kost
 
 ENV ULX3SBASEDIR=/opt \
- ULX3SURL=https://github.com/alpin3/ulx3s/releases/download/v2019.12.30/ulx3s-2019.12.30-linux-x86_64.tar.gz \
+ ULX3SURL=https://github.com/alpin3/ulx3s/releases/download/v2020.02.11/ulx3s-2020.02.11-linux-x86_64.tar.gz \
  PATH=/opt/ulx3s/bin:$PATH \
  GHDL_PREFIX=/opt/ulx3s/ghdl/lib/ghdl
 
